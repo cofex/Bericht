@@ -1,0 +1,9 @@
+\section{Organisation}
+
+Die allgemeine Kommunikation war gut, die meist w\"ochentlichen Meetings zum feststellen des Fortschrittes und absprechen der n\"achsten schritte ebenso. Unterst\"utzend k\"onnte man dazu Projektverwaltungssoftware wie Trac oder Redmine einsetzen, bei der auch Arbeitspakete erstellt, gewissen Personen als Bearbeiter und anderen als Hypervisor zugewiesen werden k\"onnen. Damit kann man den Fortschritt auch gut verfolgen,wenn man sich mal nicht trifft und man selbst sieht auch auf einem Blick wo man steht.
+
+Zudem hat man durch die Notizen zur den Arbeitspaketen auch gleiche eine Art Doku, wodurch sich der Aufwand daf\"ur minimieren w\"urde.
+Eine Intensivere nutzung von SCM,  bzw erstmal ein zuverl\"assiges und Zeitgem\"a{\ss}es SCM w\"ar auch w\"unschenswert. In Projekten mit mehreren Entwicklern, die auch verteilt arbeiten sollte sowas heutzutage zum allgemeinen Arbeitsfluss geh\"oren. 
+Die vorteile daf\"ur sind  gem\"a{\ss} der Device "commit early and often" man selbst und andere sehen sofort was als letztes ver\"andert wurde und in einem kurzen knackigen Kommentar f\"ur die Log auch ohne in die Source zu gucken. man kann das ganze auch ein Bugtrackingsystem koppeln (siehe trac/redmine) und kann Bugs fillen und zu den commits zuordnen. Es kann auch ein Buildserver angebunden werden, der je nach policy  z.b. commitgesteuert Testet (siehe TDD) oder einfach so versucht das Projekt zu bauen und bei einem Fehler wird sofort Alarm geschlagen um regressionen zu vermeiden.
+
+Eine zus\"atzliche Verbesserung w\"are es die Quelltexte durch ein Dokutool (z.b Doxygen) zu jagen um damit eine dedizierte Dokumentation \"uber die Funktionen, quasi der API, zu haben. So kann man auch mal au{\ss}erhalb der Entwicklungsumgebung sich gedanken zum Programmablauf machen.

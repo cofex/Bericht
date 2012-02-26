@@ -2,7 +2,7 @@
 // $Id: main.c 155 2009-10-23 13:10:11Z student $
 //
 // $Author: student $
-// Copyright by Simple Solutions, Stephan Schirrmann, Martin Miedreich, Andre Niemann
+// Copyright by Simple Solutions, Stephan Schirrmann, Martin Miedreich
 //
 // $Project$ 
 //

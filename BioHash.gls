@@ -1,0 +1,18 @@
+\glossarysection[\glossarytoctitle]{\glossarytitle}\glossarypreamble
+\begin{theglossary}\glossaryheader
+\glsgroupheading{B}\relax \glsresetentrylist %
+\glossaryentryfield{baremetal}{\glsnamefont{baremetal Systeme}}{Im Vergleich zu heute gängigen PCs haben eingebettete Systeme oftmals kein Betriebssysten sondern die Application läuft direkt auf der Hardware. Das ist dann ein sogenannten baremetal System.}{\relax }{\glossaryentrynumbers{\relax 
+		\setentrycounter[]{page}\glsnumberformat{8}}}\glsgroupskip
+\glsgroupheading{F}\relax \glsresetentrylist %
+\glossaryentryfield{foss}{\glsnamefont{floss}}{ Free and open Software ist bezeichnet Software die gemeinhin als \enquote {Freie Software} bekannt ist. Dem Anwender werden die freiheit gegeben die Quelltexte der Anwendung zu studieren, die Anwendung zu modifizieren, mit anderen zu teilen und zu Nutzen wie er es will.}{\relax }{\glossaryentrynumbers{\relax 
+		\setentrycounter[]{page}\glsnumberformat{5}}}\glsgroupskip
+\glsgroupheading{G}\relax \glsresetentrylist %
+\glossaryentryfield{gcc}{\glsnamefont{gcc}}{Gnu C Compiler}{\relax }{\glossaryentrynumbers{\relax 
+		\setentrycounter[]{page}\glsnumberformat{8}}}\glsgroupskip
+\glsgroupheading{M}\relax \glsresetentrylist %
+\glossaryentryfield{mcu}{\glsnamefont{MCU}}{Microcontroller Unit}{\relax }{\glossaryentrynumbers{\relax 
+		\setentrycounter[]{page}\glsnumberformat{7}}}\glsgroupskip
+\glsgroupheading{O}\relax \glsresetentrylist %
+\glossaryentryfield{ocd}{\glsnamefont{OCD}}{On Chip Debugger}{\relax }{\glossaryentrynumbers{\relax 
+		\setentrycounter[]{page}\glsnumberformat{7}}}%
+\end{theglossary}\glossarypostamble

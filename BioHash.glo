@@ -1,0 +1,5 @@
+\glossaryentry{floss?\glossaryentryfield{foss}{\glsnamefont{floss}}{ Free and open Software ist bezeichnet Software die gemeinhin als \enquote {Freie Software} bekannt ist. Dem Anwender werden die freiheit gegeben die Quelltexte der Anwendung zu studieren, die Anwendung zu modifizieren, mit anderen zu teilen und zu Nutzen wie er es will.}{\relax }|setentrycounter[]{page}\glsnumberformat}{5}
+\glossaryentry{OCD?\glossaryentryfield{ocd}{\glsnamefont{OCD}}{On Chip Debugger}{\relax }|setentrycounter[]{page}\glsnumberformat}{7}
+\glossaryentry{MCU?\glossaryentryfield{mcu}{\glsnamefont{MCU}}{Microcontroller Unit}{\relax }|setentrycounter[]{page}\glsnumberformat}{7}
+\glossaryentry{gcc?\glossaryentryfield{gcc}{\glsnamefont{gcc}}{Gnu C Compiler}{\relax }|setentrycounter[]{page}\glsnumberformat}{8}
+\glossaryentry{baremetal Systeme?\glossaryentryfield{baremetal}{\glsnamefont{baremetal Systeme}}{Im Vergleich zu heute gängigen PCs haben eingebettete Systeme oftmals kein Betriebssysten sondern die Application läuft direkt auf der Hardware. Das ist dann ein sogenannten baremetal System.}{\relax }|setentrycounter[]{page}\glsnumberformat}{8}

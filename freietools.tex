@@ -1,0 +1,74 @@
+\section{Werkzeuge}
+
+Software für eingebettete Systeme wird im groben wie normale Software erstellt, aber man brauch noch einige Hilfsmittel. Neben dem Editor, Compilersuite und Debugger wird noch ein Hilfsmittel benötigt um die Software auf das System zu bringen, da hat sich in der Entwicklung ein sogenanntes \gls{ocd} etabliert.
+Im Folgenden wird kurz das vorgegebene Werkzeug betrachtet und ein überblick über alternative Möglichkeit gegeben.
+
+
+\subsection{Keil IDE}
+
+Die Keil IDE läuft leider nur auf einer sehr eingeschränkten Anzahl von Plattformen und ist nicht Möglich das Programm auf anderen Plattformen auszuführen, selbst wenn man die Windows API bereit stellt.
+
+Zum anderen ist eine Vollwertige recht kostspielig. Die Evaluationsversion hat als einzige mir bekannte eineschränkung, dass nur Binarys bis zu einer bestimmten Größe geflasht werden können.\footnote{Kompiliert wird die Source aber komplett!}
+
+Wenn man also die IDE toll oder unentbehrlich findet, kann man sich ab einer gewissen Projektgröße die Vollversion kaufen oder man flasht das Kompilat dediziert auf die \gls{mcu}.
+
+\subsection{Firmware frei erstellen}
+
+Es gibt natürlich unzählige alternativen, die Firmware anders zu erstellen. 
+Ein sehr beliebter Aufbau ist die einzelne Bestandteile Editor, Compiler, Debugger und Flashtool als eigentständige Werkzeuge zu haben und mit Makefiles zu steuern.
+Dieser modulare bietet im gegenzug zur proprietären IDE den Vorteil, dass man einzelne Bestandteile bei Bedarf ausstauschen kann. Es könnte sich zum beispiel herrausstellen, dass man einen anderen Compiler nutzen muss und der lässt sich dann einfach in den Makefiles austauschen. Es gibt auch IDEs die den austausch von Compilern ermöglichen. Ein weiterer Vorteil ist, dass jeder Entwickler seinen lieblingseditor auf seiner lieblingsplattform nutzen kann und bei Bedarf auch Buildserver aufgestellt werden können.
+
+
+Buildserver spielen bei der Quallitätssicherung eine große Rolle. In Verbindung mit Source Code Management Software\footnote{auch bekannt unter Revisionsverwaltung} lassen sich auch Continous Integrations Systeme\footnote{\url{http://en.wikipedia.org/wiki/Continuous_integration}} aufbauen. Dadurch wird die Quallität der Software erhöht, die Bugdichte verringert und Regressionen vermieden\footnote{Vorrausgesetzt es wird von allen richtig angewand}.
+
+\subsubsection{Die Gnu Compiler Collection}
+
+In den letzten Jahren wurde der \gls{gcc} auch kontinuierlich für ARM CPUs optimiert. Es gibt aber auch eine ältere Benchmarks\footnote{http://www.compuphase.com/dhrystone.htm} die dem GCC schon vor 5 Jahren als gut im vergleich zu anderen Compilern einstuften. Bei der Recherche ist auch aufgefallen, dass Benchmarks aus den Reihen der Compilerhersteller unverhältnismäßig viel besser waren als der GCC im Vergleich zu unabhängigeren Benchmarks. Daher wird auf explizete Vergleiche und Zahlen verzichtent, zum anderen war es in dem knappen Zeitrahmen nicht möglich eigenen Tests zu fahren.
+
+
+Als freie C-Bibliothek für \gls{baremetal} wird sehr oft die unter BSD stehende Newlib\footnote{\url{http://sourceware.org/newlib/}} empfohlen. Die Newlib ist eine sehr schlanke C-Bilbiotheke, die speziell für den einsatz auf eingebetteten Systemen entwickelt wurde. Wenn man aber Anwendungen für die Ausführung auf einem Betriebssystem baut, brauch man eine andere C-Bibliothek. Für GNU/Linuxsysteme gibt es da unter anderem die uClibc.
+
+
+Wenn es schon verschiedene C-Bibliotheken gibt, gibt es auch verschieden optimierte Compiler. So kann der GCC für Linux oder "none" Targests gebaut sein. None steht für ohne Betriebssystem. Und die ABI ist meitens auch im Präfix mit angebenen. So verwendet man für baremetal Systeme heutzutage einen arm-none-eabi-*\footnote{Den Linuxkernel compiliert man folglich mit einem anders optimitierten gcc als die Binaries zur Auführung vom Betriebsystem}.
+
+\subsubsection{OpenOCD}
+
+Um das Kompilat nun auf das Target zu bekommen, brauch man noch ein Flashtool. Da hat sich als Software das OpenOCD\footnote{\url{http://openocd.sf.net/}} etabliert. Das kann mit vielen verschiedenen JTAGPods zusammen arbeiten und unterstützt eine vielzahl von ARM Mikrontrollern.
+
+Nachdem man sich OpenOCD installiert und einen unterstützten JTAGPod hat, muss man sich noch eine Configurationsdatei für sein Target suchen oder selbst erstellen und es kann losgehen.
+
+
+Vom Arbeitsfluss her ist das so konzipiert, dass der Openocd als mit dem JTAGPod spricht und als Serveranwendung über den Port 3333 eine GDB-Schnittstelle und über Port 4444 eine Schnittstelle für Telnet bereitstellt.
+Wenn man sich per Telnet mit dem OpenOCD verbindet, kann man diverse Operationen auf dem Microcontroller ausführen. Zum beispiel Anhalten, Resetten, Register auslesen, Register schreiben, den Flash auslesen und den Flash beschreiben.
+
+So kann man eine Intelhexdatei aus dem Keilcompiler mit \begin{verbatim}flash write\_image erase firmware.hex 0 ihex
+\end{verbatim} 
+in den Flash schreiben.
+
+
+Debuggen kann man mit OpenOCD auch.
+
+\subsection{Buildserver}
+
+Nachdem Buildprozess mit dedizierten Tools und Makefiles sauber partitioniert wurde kann man ihn auch auf andere Rechner ausgliedern. So kann man sich skalierbare Buildcluster bauen oder einen einfachen Buildserver. Das bietet einem die Möglichkeit nach jedem Codecheckin das gesamte Projekt zu bauen und im Fehlerfall dem verursachendem Entwickler und den Projektleiter zeitnah RÜckmeldung geben, wenn etwas schiefläuft.
+
+So vermeidet man nichtnur langwierige Fehlersuche, sondern es bietet sich auch gleich an Arbeitsweisen aus dem Test Driven Development\footnote{\url{http://en.wikipedia.org/wiki/Test-driven_development}} zu übernehmen. Da wird das verhalten der Software vorab definiert und nur bei erfüllung der Spezifikationen kommt es in den Produktivzweig. Die Vorteile von TDD beschriebt James Grenning sehr gut in Test Driven Development for Embedded C\footnote{\url{http://pragprog.com/book/jgade/test-driven-development-for-embedded-c}}. 
+
+
+Zudem ersparrt man sich durch TDD auch einen Großteil des langwierigen Debugging, was vor allem auf Mircokontrollern noch komplizierter ist.
+
+
+Aufgrund der knappen Zeit aber auch aufgrund mangelnder Resourcen wurde kein Buildserver aufgesetzt aber aus persönlicher Empfehlung wurde ein kurzer Blick auf e2factory\footnote{\url{http://e2factory.org/}} geworfen. Das Tool bietet SCM integration, automatiserte Builds und andere Features die im Unternehmensumfeld benötigt werden.
+Es wird von einem auf eingebettete Systeme spezialisierten Betrieb entwickelt und auch produktiv von anderen Betrieben eingesetzt.
+
+
+\subsection{Dokumentationen}
+
+Obwohl viele der Meinung sind, dass der Quelltext genug Dokumentation sei lässt es sich nicht abstreiten, dass eine gute Seperate Dokumentierung der API oder des Verhaltens der Software eine praktische Sache ist.
+
+
+Natürlich macht Dokumentation schreiben nicht so sonderlich viel Spaß und alles nochmal zu Tippen, nur nich in Befehlen für die Maschine erklärt, sondern in menschenlesbarer Umschreibung auch nicht.
+Daher kann man sich mit Doxygen\footnote{\url{http://www.stack.nl/~dimitri/doxygen/}} Dokumentation aus den Quelltexten erstellen lassen. Doxygen unterstützt verschiedene Exportformate, wobei sich meistens HMTL empfielt, weil das im Webbrowser interaktiv verwendbar ist.
+
+
+Es gibt auch graphische Frontends zum erstellen der Steuerdateien für Doxygen.

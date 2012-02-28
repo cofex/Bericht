@@ -1,6 +1,17 @@
 \BOOKMARK [1][-]{section.1}{Organisation}{}% 1
-\BOOKMARK [1][-]{section.2}{Implementierung}{}% 2
-\BOOKMARK [1][-]{section.3}{Matlab-Vergleiche}{}% 3
-\BOOKMARK [1][-]{section.4}{Quellcode}{}% 4
-\BOOKMARK [2][-]{subsection.4.1}{main.c}{section.4}% 5
-\BOOKMARK [2][-]{subsection.4.2}{authentication.c}{section.4}% 6
+\BOOKMARK [1][-]{section.2}{Lizenzen}{}% 2
+\BOOKMARK [2][-]{subsection.2.1}{Freie Lizenzen}{section.2}% 3
+\BOOKMARK [2][-]{subsection.2.2}{Copyleft und Copyright}{section.2}% 4
+\BOOKMARK [2][-]{subsection.2.3}{Lizenzen im Projekt}{section.2}% 5
+\BOOKMARK [1][-]{section.3}{Werkzeuge}{}% 6
+\BOOKMARK [2][-]{subsection.3.1}{Keil IDE}{section.3}% 7
+\BOOKMARK [2][-]{subsection.3.2}{Firmware frei erstellen}{section.3}% 8
+\BOOKMARK [3][-]{subsubsection.3.2.1}{Die Gnu Compiler Collection}{subsection.3.2}% 9
+\BOOKMARK [3][-]{subsubsection.3.2.2}{OpenOCD}{subsection.3.2}% 10
+\BOOKMARK [2][-]{subsection.3.3}{Buildserver}{section.3}% 11
+\BOOKMARK [2][-]{subsection.3.4}{Dokumentationen}{section.3}% 12
+\BOOKMARK [1][-]{section.4}{Alterungstest in Matlab}{}% 13
+\BOOKMARK [1][-]{section.5}{Implementierung}{}% 14
+\BOOKMARK [1][-]{section.6}{Quellcode}{}% 15
+\BOOKMARK [2][-]{subsection.6.1}{main.c}{section.6}% 16
+\BOOKMARK [2][-]{subsection.6.2}{authentication.c}{section.6}% 17
